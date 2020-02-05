@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Service
 public class GrammarChecker {
         @Autowired
-        @Qualifier("EnglishSpellChecker")
+        //@Qualifier("EnglishSpellChecker")
+        @Qualifier("SpanishSpellChecker")
 	SpellChecker sc;
 
 	String x;

@@ -10,9 +10,13 @@ import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.impl.InMemoryBlueprintPersistence;
+
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
+import org.springframework.stereotype.Component;
+
 import static org.junit.Assert.*;
 
 /**
@@ -67,6 +71,22 @@ public class InMemoryPersistenceTest {
         }
                 
         
+    }
+    @Test
+    public void wouldBeFindAllExistingBlueprintInMemoryByAuthor() {
+    	try {
+    		InMemoryBlueprintPersistence ibpp=new InMemoryBlueprintPersistence();
+    		Point[] points = new Point[] {};
+    		Blueprint bp1 = new Blueprint("Juan","test",points);
+    		Blueprint bp2 = new Blueprint("Juan","test2",points);
+			ibpp.saveBlueprint(bp1);
+			ibpp.saveBlueprint(bp2);
+			Set<Blueprint> set = ibpp.getBluePrintsByAutor("Juan");
+			assertTrue(set.contains(bp1) && set.contains(bp2));
+			
+		} catch (BlueprintPersistenceException e) {
+			assertTrue(false);
+		}
     }
 
 
