@@ -1,4 +1,4 @@
-package edu.eci.arsw.blueprints.test.persistence.impl;
+package edu.eci.arsw.blueprints.filters;
 
 import static org.junit.Assert.*;
 
