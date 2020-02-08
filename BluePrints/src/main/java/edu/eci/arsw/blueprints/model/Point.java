@@ -37,6 +37,14 @@ public class Point {
     public void setY(int y) {
         this.y = y;
     }
+    public int hashCode() {
+    	return 1;
+    }
+    public boolean equals(Object o) {
+    	if(!(o instanceof Point)) return false;
+    	Point p = (Point) o;
+    	return p.getX()==x && p.getY()==y;
+    }
     
     
     
