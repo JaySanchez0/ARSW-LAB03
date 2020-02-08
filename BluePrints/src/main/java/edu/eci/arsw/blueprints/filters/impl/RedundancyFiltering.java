@@ -1,6 +1,8 @@
 package edu.eci.arsw.blueprints.filters.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
@@ -13,13 +15,13 @@ public class RedundancyFiltering implements Filtering{
 		
 	}
 	@Override
-	public Point[] filter(Point[] points) {
+	public List<Point> filter(List<Point> points) {
 		Set<Point> filterpoints = new HashSet<>();
 		for(Point p:points) {
 			filterpoints.add(p);
 		}
 		//for(Point p:filterpoints) System.out.println("("+p.getX()+","+p.getY()+")");
 		//System.out.println("------------------");
-		return filterpoints.toArray(new Point[filterpoints.size()]);
+		return new ArrayList<Point>(filterpoints);
 	}
 }

@@ -12,6 +12,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,9 @@ public class BlueprintsServices {
      */
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
         return bpp.getBluePrintsByAutor(author);
+    }
+    
+    public List<Point> getPlainFilter(String author,String name) throws BlueprintNotFoundException {
+    	return filter.filter(getBlueprint(author,name).getPoints());
     }
 }

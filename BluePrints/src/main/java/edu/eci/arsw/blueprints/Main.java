@@ -14,9 +14,10 @@ public class Main {
 		try {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		BlueprintsServices services = ac.getBean(BlueprintsServices.class);
-		services.addNewBlueprint(new Blueprint("Juan","me",new Point[] {new Point(2,3),new Point(3,4)}));
+		services.addNewBlueprint(new Blueprint("Juan","me",new Point[] {new Point(2,3),new Point(3,4),new Point(5,7)}));
 		Blueprint b = services.getBlueprint("Juan","me");
 		System.out.println(services.getAllBlueprints());
+		System.out.println(services.getPlainFilter("Juan", "me").toString());
 		} catch (BlueprintNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
