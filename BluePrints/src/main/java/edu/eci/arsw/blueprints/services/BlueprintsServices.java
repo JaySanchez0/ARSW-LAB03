@@ -61,8 +61,21 @@ public class BlueprintsServices {
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
         return bpp.getBluePrintsByAutor(author);
     }
-    
-    public List<Point> getPlainFilter(String author,String name) throws BlueprintNotFoundException {
-    	return filter.filter(getBlueprint(author,name).getPoints());
+    /**
+     * 
+     * @param author - the Blueprint Author name
+     * @param name - The blueprint name
+     * @return give a Blueprint with the filter apply
+     * @throws BlueprintNotFoundException - if don't exist the Blueprint
+     */
+    public Blueprint getFilterBlueprint(String author,String name) throws BlueprintNotFoundException {
+    	return filter.filter(getBlueprint(author,name));
     }
+    /**
+     * @return give a Set of All Blueprints with the filter Apply
+     */
+    public Set<Blueprint> getAllBlueprintFilering(){
+    	return filter.filterSet(getAllBlueprints());
+    }
+    
 }

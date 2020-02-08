@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.stereotype.Component;
 
 import edu.eci.arsw.blueprints.filters.Filtering;
+import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
 @Component("RedundancyFiltering")
 public class RedundancyFiltering implements Filtering{
@@ -15,13 +16,13 @@ public class RedundancyFiltering implements Filtering{
 		
 	}
 	@Override
-	public List<Point> filter(List<Point> points) {
+	public Blueprint filter(Blueprint blue) {
 		Set<Point> filterpoints = new HashSet<>();
-		for(Point p:points) {
+		for(Point p: blue.getPoints()) {
 			filterpoints.add(p);
 		}
 		//for(Point p:filterpoints) System.out.println("("+p.getX()+","+p.getY()+")");
 		//System.out.println("------------------");
-		return new ArrayList<Point>(filterpoints);
+		return new Blueprint(blue.getName(),blue.getAuthor(),filterpoints.toArray(new Point[filterpoints.size()]));
 	}
 }
